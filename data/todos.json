@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "title": "Learning Class",
+    "description": "i am learning APIs so i need contuinity to do api classes",
+    "completed": false,
+    "created_at": "2025-08-27T15:03:59.110135",
+    "updated_at": "2025-08-27T15:03:59.110150"
+  }
+]

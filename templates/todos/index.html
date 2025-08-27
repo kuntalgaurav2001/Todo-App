@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="todo-app">
+    <h1>✨ Todo App</h1>
+    
+    <!-- Add Todo Form -->
+    <div class="add-todo-form">
+        <input type="text" id="todoTitle" placeholder="What needs to be done?" maxlength="200">
+        <textarea id="todoDescription" placeholder="Description (optional)" maxlength="500"></textarea>
+        <button onclick="addTodo()" class="btn btn-primary">Add Todo</button>
+    </div>
+
+    <!-- Todo List -->
+    <div class="todo-list" id="todoList">
+        {% for todo in todos %}
+        <div class="todo-item {% if todo.completed %}completed{% endif %}" data-id="{{ todo.id }}">
+            <div class="todo-content">
+                <input type="checkbox" 
+                       {% if todo.completed %}checked{% endif %}
+                       onchange="toggleComplete({{ todo.id }})"
+                       class="todo-checkbox">
+                <div class="todo-text">
+                    <h3 class="todo-title">{{ todo.title }}</h3>
+                    {% if todo.description %}
+                    <p class="todo-description">{{ todo.description }}</p>
+                    {% endif %}
+                    <small class="todo-date">Created: {{ todo.created_at|slice:":10" }}</small>
+                </div>
+            </div>
+            <div class="todo-actions">
+                <button onclick="editTodo({{ todo.id }})" class="btn btn-edit">✏️</button>
+                <button onclick="deleteTodo({{ todo.id }})" class="btn btn-delete">🗑️</button>
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Edit Todo</h2>
+        <input type="text" id="editTitle" placeholder="Todo title">
+        <textarea id="editDescription" placeholder="Description"></textarea>
+        <button onclick="saveEdit()" class="btn btn-primary">Save Changes</button>
+    </div>
+</div>
+{% endblock %}
