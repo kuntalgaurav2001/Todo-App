@@ -2,7 +2,7 @@
 
 A beautiful, full-featured Todo application built with Python, Django, and modern web technologies. This app provides a complete CRUD (Create, Read, Update, Delete) interface for managing your daily tasks with a stunning gradient UI and JSON-based data storage.
 
-![Todo App Screenshot](todoApp/s1.png)
+![Todo App Screenshot](./s1.png)
 
 ## 🚀 Features
 
